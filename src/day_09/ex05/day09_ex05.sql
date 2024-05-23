@@ -1,0 +1,11 @@
+DROP FUNCTION FNC_PERSONS_FEMALE();
+DROP FUNCTION FNC_PERSONS_MALE();
+
+CREATE OR REPLACE FUNCTION FNC_PERSONS(IN PGENDER varchar DEFAULT 'female')
+RETURNS TABLE (ID bigint, NAME varchar, AGE integer, GENDER varchar, ADDRESS varchar)AS $$
+select * from person where pgender = gender
+$$ LANGUAGE SQL;
+
+SELECT * FROM FNC_PERSONS(PGENDER := 'male');
+
+SELECT * FROM FNC_PERSONS();

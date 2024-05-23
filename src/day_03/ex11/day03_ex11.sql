@@ -1,0 +1,3 @@
+UPDATE MENU
+SET PRICE = (PRICE - ((PRICE / 100) * 10))
+WHERE PIZZA_NAME = 'greek pizza'

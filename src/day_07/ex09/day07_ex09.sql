@@ -1,0 +1,9 @@
+SELECT ADDRESS, ROUND(MAX(AGE::numeric) - MIN(AGE::numeric) / MAX(AGE::numeric), 2) AS FORMULA,
+ROUND(AVG(AGE::numeric), 2) AS AVERAGE,
+CASE
+WHEN (ROUND(MAX(AGE::numeric) - MAX(AGE::numeric) / MIN(AGE::numeric), 2)) > (ROUND(AVG(AGE::numeric), 2)) THEN 'true'
+ELSE 'false'
+END AS COMPARISON
+FROM PERSON
+GROUP BY ADDRESS
+ORDER BY 1
